@@ -19,6 +19,8 @@ the default value 100; define the variable to change the value in pgbouncer.ini.
 
 You can see an full docker-compose example [[Here](https://github.com/gcavalcante8808/docker-pgbouncer/blob/master/docker-compose.yml)].
 
+The container listens on 5432 by default and use the same name of the `DB_NAME` env variable for the database.
+
 Author
 ------
 
