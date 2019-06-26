@@ -31,7 +31,7 @@ echo "Writing pgbouncer.ini file"
 cat <<EOT > /etc/pgbouncer/pgbouncer.ini
 
 [databases]
-${DB_NAME} = host=${DB_HOST} dbname=${DB_NAME}
+${DB_NAME} = host=${DB_HOST} dbname=${DB_NAME} ${CONNECTION_OPTIONS}
 
 [pgbouncer]
 #logfile = /var/log/pgbouncer.log
@@ -48,6 +48,10 @@ max_client_conn = ${MAX_CLIENT_CONN}
 default_pool_size = ${MAX_CLIENT_CONN}
 
 EOT
+
+if [[ ! -z ${IGNORE_STARTUP_OPTIONS} ]]; then
+    echo "ignore_startup_parameters = ${IGNORE_STARTUP_OPTIONS}" >> /etc/pgbouncer/pgbouncer.ini
+fi
 
 echo "Writing auth file for pgbouncer"
 

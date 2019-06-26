@@ -13,7 +13,14 @@ You need to provide the following envinronment variables:
  * DB_NAME: name of the target database;
  * DB_USER: user with privileges in the given database;
  * DB_PASSWORD: password of the user.
- 
+
+The following env vars are optional but often used:
+
+ * CONNECTION_OPTIONS: Default options for connection, separated by whitespace.
+ * IGNORE_STARTUP_OPTIONS: Options to be ignored, separated by whitespace.. See http://manpages.ubuntu.com/manpages/trusty/man5/pgbouncer.5.html.
+
+**WARNING**: Invalid connection options will make the pgbouncer to ignore the database entirelly. 
+
 The pgbouncer is configured to operate in session and a have an envinronment variabled called `MAX_CLIENT_CONN`, with
 the default value 100; define the variable to change the value in pgbouncer.ini.
 
