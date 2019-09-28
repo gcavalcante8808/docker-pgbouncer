@@ -43,6 +43,8 @@ listen_port = 5432
 auth_type = plain
 auth_file = /etc/pgbouncer/userlist.txt
 
+server_tls_sslmode = allow
+
 pool_mode = session
 max_client_conn = ${MAX_CLIENT_CONN}
 default_pool_size = ${MAX_CLIENT_CONN}
