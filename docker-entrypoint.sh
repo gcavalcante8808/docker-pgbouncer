@@ -22,6 +22,10 @@ if [[ -z ${DB_PASSWORD+x} ]]; then
     DB_PASSWORD="postgres"
 fi
 
+if [[ -z ${DB_PORT+x} ]]; then
+   echo "No default Port Provided, using 5432 as default"
+fi
+
 if [[ -z ${MAX_CLIENT_CONN+x} ]]; then
     echo "No Max client Conn Provided. Assuming 100 connections in session mode."
     MAX_CLIENT_CONN=100
@@ -31,7 +35,7 @@ echo "Writing pgbouncer.ini file"
 cat <<EOT > /etc/pgbouncer/pgbouncer.ini
 
 [databases]
-${DB_NAME} = host=${DB_HOST} dbname=${DB_NAME} ${CONNECTION_OPTIONS}
+${DB_NAME} = host=${DB_HOST} port=${DB_PORT:-5432} dbname=${DB_NAME} ${CONNECTION_OPTIONS}
 
 [pgbouncer]
 #logfile = /var/log/pgbouncer.log
